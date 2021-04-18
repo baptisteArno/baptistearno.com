@@ -1,7 +1,7 @@
 import { Heading, HStack, SimpleGrid } from "@chakra-ui/layout";
 import { Container } from "../components/Container";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import {
   Box,
   LinkBox,
@@ -24,6 +24,8 @@ type Props = {
   projects: ProjectFragment[];
 };
 const Index = ({ projects }: Props): JSX.Element => {
+  const [avatarLoaded, setAvatarLoaded] = useState(false);
+
   const cardBgColor = useColorModeValue("", "gray.800");
   return (
     <Container>
@@ -46,12 +48,13 @@ const Index = ({ projects }: Props): JSX.Element => {
           direction={["column", "row"]}
           mb={10}
         >
-          <Box
-            transform="rotateY(5deg)"
-            transition="transform 1s ease 0s"
-            _hover={{ transform: "rotateY(0deg)" }}
-          >
-            <Image src="/avatar.png" width="100px" height="124px" />
+          <Box opacity={avatarLoaded ? 1 : 0} transition="opacity 500ms">
+            <Image
+              src="/avatar.png"
+              width="100px"
+              height="124px"
+              onLoad={() => setAvatarLoaded(true)}
+            />
           </Box>
 
           <Stack alignItems={["center", "flex-start"]}>
