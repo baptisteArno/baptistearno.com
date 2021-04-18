@@ -12,6 +12,12 @@ export default class Document extends NextDocument {
             href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Open+Sans&display=swap"
             rel="stylesheet"
           />
+          <script
+            async
+            defer
+            data-domain="baptistearno.com"
+            src="https://plausible.baptistearno.com/js/plausible.js"
+          ></script>
         </Head>
         <body>
           {/* Make Color mode to persists when you refresh the page. */}
