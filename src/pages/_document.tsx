@@ -1,11 +1,18 @@
-import NextDocument, { Html, Head, Main, NextScript } from 'next/document'
-import { ColorModeScript } from '@chakra-ui/react'
+import React from "react";
+import NextDocument, { Html, Head, Main, NextScript } from "next/document";
+import { ColorModeScript } from "@chakra-ui/react";
 
 export default class Document extends NextDocument {
-  render() {
+  render(): JSX.Element {
     return (
       <Html>
-        <Head />
+        <Head>
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500;600;700&family=Open+Sans&display=swap"
+            rel="stylesheet"
+          />
+        </Head>
         <body>
           {/* Make Color mode to persists when you refresh the page. */}
           <ColorModeScript />
@@ -13,6 +20,6 @@ export default class Document extends NextDocument {
           <NextScript />
         </body>
       </Html>
-    )
+    );
   }
 }

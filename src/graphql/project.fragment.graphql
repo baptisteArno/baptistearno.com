@@ -1,0 +1,10 @@
+fragment project on projects {
+  created_at
+  id
+  name
+  status
+  thumbnailUrl
+  updated_at
+  description
+  url
+}
