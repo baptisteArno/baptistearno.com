@@ -39,7 +39,13 @@ const Index = ({ projects }: Props): JSX.Element => {
         <Text pos="absolute" bottom="2" fontSize="3xl">
           👇
         </Text>
-        <HStack w="full" justifyContent="flex-end" pos="absolute" top={4}>
+        <HStack
+          w="full"
+          justifyContent="flex-end"
+          pos="absolute"
+          top={4}
+          pr={[4, 0]}
+        >
           <DarkModeButton />
         </HStack>
         <Stack
