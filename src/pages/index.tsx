@@ -12,18 +12,18 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { GetStaticPropsResult } from "next";
-import { addApolloState, initializeApollo } from "../lib/apolloClient";
-import {
-  ProjectFragment,
-  ProjectsDocument,
-  ProjectsQueryResult,
-} from "../@types/codegen/graphql";
 import { DarkModeButton } from "../components/DarkModeButton";
 
-type Props = {
-  projects: ProjectFragment[];
+type Project = {
+  id: string;
+  thumbnailUrl: string;
+  url: string;
+  name: string;
+  description: string;
+  status: string[];
 };
-const Index = ({ projects }: Props): JSX.Element => {
+
+const Index = ({ projects }: { projects: Project[] }): JSX.Element => {
   const [avatarLoaded, setAvatarLoaded] = useState(false);
 
   const cardBgColor = useColorModeValue("", "gray.800");
@@ -66,9 +66,10 @@ const Index = ({ projects }: Props): JSX.Element => {
           <Stack alignItems={["center", "flex-start"]}>
             <Heading>Hey there 👋</Heading>
             <Text maxW="500px" textAlign={["center", "left"]}>
-              I&apos;m Baptiste, Software Engineer, Entrepreneur.
-              <br /> I&apos;m trying to do everything myself: Design, Code,
-              Marketing.
+              I&apos;m Baptiste from France, Software Engineer, founder of
+              Typebot.
+              <br /> I&apos;m challenging myself to design, code and market my
+              projects alone.
             </Text>
           </Stack>
         </Stack>
@@ -120,21 +121,13 @@ const Index = ({ projects }: Props): JSX.Element => {
 };
 
 export const getStaticProps = async (): Promise<
-  GetStaticPropsResult<Props>
+  GetStaticPropsResult<{ projects: Project[] }>
 > => {
-  const apolloClient = initializeApollo();
-
-  const results = (await apolloClient.query({
-    query: ProjectsDocument,
-  })) as ProjectsQueryResult;
-
-  if (!results.data) throw new Error("No projects found");
-
-  const { projects } = results.data;
-  return addApolloState(apolloClient, {
+  const projects: Project[] = [];
+  return {
     props: { projects },
     revalidate: 1,
-  });
+  };
 };
 
 export default Index;
