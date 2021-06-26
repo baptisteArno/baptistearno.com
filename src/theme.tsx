@@ -7,7 +7,7 @@ const fonts = {
 
 const theme = extendTheme({
   config: {
-    useSystemColorMode: false,
+    useSystemColorMode: true,
     initialColorMode: "dark",
   },
   colors: {

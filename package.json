@@ -16,9 +16,11 @@
     "@chakra-ui/theme-tools": "1.1.4",
     "@emotion/react": "11.1.5",
     "@emotion/styled": "11.3.0",
+    "@notionhq/client": "^0.2.0",
     "focus-visible": "^5.2.0",
     "framer-motion": "^4.1.4",
     "next": "latest",
+    "notion-blocks-chakra-ui": "^0.0.7",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
@@ -29,11 +31,12 @@
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.24.0",
+    "eslint-config-next": "^11.0.1",
     "eslint-config-prettier": "^8.2.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.23.2",
     "prettier": "^2.2.1",
-    "typescript": "4.2.4"
+    "typescript": "4.3.4"
   },
   "license": "MIT"
 }

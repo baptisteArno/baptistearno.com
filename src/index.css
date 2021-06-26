@@ -1,3 +1,15 @@
-.image-rounded {
-  border-radius: 0.5rem;
+.image-container {
+  width: 100%;
+}
+
+.image-container > div {
+  position: unset !important;
+}
+
+.image-container .image {
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
+  max-height: 700px !important;
 }

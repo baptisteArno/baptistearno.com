@@ -10,6 +10,7 @@ export const DarkModeButton = (): JSX.Element => {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       icon={isDark ? <SunIcon /> : <MoonIcon />}
       onClick={toggleColorMode}
+      rounded="md"
     />
   );
 };
