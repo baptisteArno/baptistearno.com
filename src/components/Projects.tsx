@@ -18,6 +18,7 @@ import {
 import React from "react";
 import Image from "next/image";
 import { NextChakraLink } from "./NextChakraLink";
+import { MotionStack } from "./motion";
 
 export type Project = {
   id: string;
@@ -66,8 +67,9 @@ const ProjectGrid = ({ projects }: Props) => {
   return (
     <SimpleGrid columns={[1, 3]} w="full" spacing={3} maxW="1000px">
       {projects.map((project) => (
-        <Stack
+        <MotionStack
           key={project.id}
+          whileHover={{ y: -5 }}
           as={NextChakraLink}
           href={
             project.url.rich_text.length > 0
@@ -108,7 +110,7 @@ const ProjectGrid = ({ projects }: Props) => {
             ))}
           </Wrap>
           <Text>{project.description.rich_text[0].plain_text}</Text>
-        </Stack>
+        </MotionStack>
       ))}
     </SimpleGrid>
   );

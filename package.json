@@ -18,7 +18,7 @@
     "@emotion/styled": "11.3.0",
     "@notionhq/client": "^0.2.0",
     "focus-visible": "^5.2.0",
-    "framer-motion": "^4.1.4",
+    "framer-motion": "3.10.6",
     "next": "latest",
     "notion-blocks-chakra-ui": "^0.0.7",
     "react": "^17.0.1",

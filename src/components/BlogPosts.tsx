@@ -16,6 +16,7 @@ import {
 import React from "react";
 import Image from "next/image";
 import { NextChakraLink } from "./NextChakraLink";
+import { MotionStack } from "./motion";
 
 export type Post = {
   slug: RichTextPropertyValue;
@@ -46,9 +47,10 @@ const PostsGrid = ({ posts }: Props) => {
   return (
     <SimpleGrid columns={[1, 2]} w="full" spacing={3} maxW="1000px" id="blog">
       {posts.map((post) => (
-        <Stack
+        <MotionStack
           as={NextChakraLink}
           key={post.slug.rich_text[0].plain_text}
+          whileHover={{ y: -5 }}
           p={4}
           mx={[6, 0]}
           rounded="xl"
@@ -79,7 +81,7 @@ const PostsGrid = ({ posts }: Props) => {
             ))}
           </Stack>
           <Text>{post.description.rich_text[0].plain_text}</Text>
-        </Stack>
+        </MotionStack>
       ))}
     </SimpleGrid>
   );
