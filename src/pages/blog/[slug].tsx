@@ -35,7 +35,14 @@ export default function BlogPost({ post, blocks }: Props): JSX.Element {
         <Heading as="h1" size="2xl" textAlign="center">
           <NotionText text={post.title.title} />
         </Heading>
-        <Stack mt={6} spacing={10} maxW="700px" mx="auto" fontSize="21px">
+        <Stack
+          mt={6}
+          spacing={10}
+          maxW="700px"
+          mx="auto"
+          fontSize="21px"
+          w="full"
+        >
           {blocks.map((block) => (
             <NotionBlock
               key={block.id}
