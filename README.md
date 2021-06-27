@@ -1,27 +1,25 @@
-# Example app with [chakra-ui](https://github.com/chakra-ui/chakra-ui) and Typescript
+# baptisteArno.com
 
-This example features how to use [chakra-ui](https://github.com/chakra-ui/chakra-ui) as the component library within a Next.js app with typescript.
+[Visit the site](https://baptisteArno.com)
 
-Next.js and chakra-ui have built-in TypeScript declarations, so we'll get autocompletion for their modules straight away.
+## Get started
 
-We are connecting the Next.js `_app.js` with `chakra-ui`'s Provider and theme so the pages can have app-wide dark/light mode. We are also creating some components which shows the usage of `chakra-ui`'s style props.
+1. Clone the project
+2. Add a `.env.local` file with the following content:
 
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-chakra-ui-typescript&project-name=with-chakra-ui-typescript&repository-name=with-chakra-ui-typescript)
-
-## How to use
-
-### Using `create-next-app`
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
-
-```bash
-npx create-next-app --example with-chakra-ui-typescript with-chakra-ui-typescript-app
-# or
-yarn create next-app --example with-chakra-ui-typescript with-chakra-ui-typescript-app
+```
+NOTION_API_TOKEN=<YOUR_TOKEN>
+NOTION_PROJECTS_DATABASE_ID=<YOUR_ID>
+NOTION_BLOG_DATABASE_ID=<YOUR_ID>
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+It uses:
+
+- Next.js
+- Chakra UI
+- Notion as a CMS (Real-time updates with [Incremental Static regeneration](https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration))
+- [notion-blocks-chakra-ui](https://github.com/baptisteArno/notion-blocks-chakra-ui) to parse Notion blocks into Chakra UI components
+
+<img width="1437" alt="CleanShot 2021-06-27 at 19 17 48@2x" src="https://user-images.githubusercontent.com/16015833/123553605-6f68fc80-d77c-11eb-8d11-687660af1d17.png">
+
+<img width="1439" alt="CleanShot 2021-06-27 at 19 18 01@2x" src="https://user-images.githubusercontent.com/16015833/123553604-6d9f3900-d77c-11eb-81e3-5834296c035f.png">
