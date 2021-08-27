@@ -63,8 +63,8 @@ const PostsGrid = ({ posts }: Props) => {
           <Box h="200px" w="full" pos="relative">
             <Image
               src={
-                post.thumbnailUrl.rich_text[0].plain_text ??
-                "https://placeimg.com/200/200/tech"
+                post.thumbnailUrl.rich_text[0]?.plain_text ??
+                "https://placeimg.com/400/400/tech"
               }
               layout="fill"
               objectFit="cover"

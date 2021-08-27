@@ -45,7 +45,7 @@ export const Projects = ({ projects }: Props): JSX.Element => (
       </Heading>
       <ProjectGrid
         projects={projects.filter(
-          (project) => project.type.select.name === "main"
+          (project) => project.type.select?.name === "main"
         )}
       />
     </Stack>
@@ -55,7 +55,7 @@ export const Projects = ({ projects }: Props): JSX.Element => (
       </Heading>
       <ProjectGrid
         projects={projects.filter(
-          (project) => project.type.select.name === "side"
+          (project) => project.type.select?.name === "side"
         )}
       />
     </Stack>

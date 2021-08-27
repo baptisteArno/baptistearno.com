@@ -13,3 +13,7 @@
   height: unset !important;
   max-height: 700px !important;
 }
+
+.image-rounded {
+  border-radius: 0.5rem;
+}
