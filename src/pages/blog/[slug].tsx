@@ -1,6 +1,7 @@
 import { Heading, Stack } from "@chakra-ui/react";
 import {
   Block,
+  Page,
   RichTextPropertyValue,
 } from "@notionhq/client/build/src/api-types";
 import React from "react";
@@ -72,7 +73,7 @@ export const getStaticPaths = async (): Promise<{
     process.env.NOTION_BLOG_DATABASE_ID
   );
   return {
-    paths: database.map((page) => ({
+    paths: database.filter(pageWithSlugAndId).map((page) => ({
       params: {
         slug: (page.properties.slug as RichTextPropertyValue).rich_text[0]
           .plain_text,
@@ -82,6 +83,11 @@ export const getStaticPaths = async (): Promise<{
     fallback: true,
   };
 };
+
+const pageWithSlugAndId = (page: Page) =>
+  page.id &&
+  (page.properties.slug as RichTextPropertyValue | undefined)?.rich_text[0]
+    ?.plain_text;
 
 export const getStaticProps = async (context: {
   params: { slug: string };
