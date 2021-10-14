@@ -1,0 +1,144 @@
+---
+title: "Onboarding emails custom sequences with Mailgun"
+publishedAt: "2021-10-14"
+summary: "How I created custom onboarding email sequences with Mailgun and a little bit of code"
+imagePath: "/blog/onboarding-emails/thumbnail.png"
+---
+
+For Typebot, I needed to send custom onboarding emails to my newly registered users. For example:
+
+- The user created an account but didn't create a typebot
+- The user created a typebot but didn't publish it
+- The user published a typebot but didn't embed it on a site
+
+It also needed to be a sequence (of at least 3 emails) to maximize the chances the user comes back to the tool.
+
+I tried to look for third-party tools but I figured that it would be complicated to handle different scenarios as I would need to update the user properties in the tools by calling an API each time a user has done an action?
+
+So, I ultimately decided to use Mailgun and scheduled cloud functions (In my case, Firebase Cloud functions).
+
+> Mailgun is an API that "enable you to send, receive and track email effortlessly".
+
+If you're a developer or a control freak, like me, you probably would prefer to code your own email sequence engine 😃.
+
+## Create the email templates in Mailgun
+
+With Mailgun, you can create email templates that you can then call with their JS SDK. You can find the Templates page under the `Sending` tab.
+
+Here is one of my templates:
+
+```html
+<p>Hey{{firstName}},</p>
+<p>Your typebot’s looking good so far. 💎</p>
+<p>Finished with editing? Then let&#39;s move on to the next step, shall we?</p>
+<p>
+  Once you’re finished with personalizing it, all you need to do is to
+  <a href="https://app.typebot.io/typebots/{{chatbotId}}/share"
+    >publish it and share it to your audience</a
+  >. <br />Then you&#39;ll start collecting those precious responses to help
+  grow your business.
+</p>
+<p>Let me know if you have any questions with publishing your typebot.</p>
+{{{signature}}} {{{unsubscribe}}}
+```
+
+Then, to send an email using this template, you can directly set it in the mail options in your code:
+
+```ts
+export const sendOnboardingEmail = async ({
+  to,
+  subject,
+  template,
+  campaign,
+  sendDate,
+  userId,
+  variables,
+}: SendEmailProps) => {
+  const mailOptions = {
+    from: '"Baptiste Arnaud" <baptiste@typebot.io>',
+    to,
+    subject,
+    "h:List-Unsubscribe": `https://api.typebot.io/api/user/notifications/unsubscribe?id=${userId}`,
+    "h:Reply-To": '"Baptiste Arnaud" <baptiste@mg.typebot.io>',
+    "h:X-Mailgun-Variables": JSON.stringify({
+      signature: htmlSignature,
+      unsubscribe: htmlUnsubscribe(userId),
+      ...variables,
+    }),
+    template,
+  };
+  if (sendDate) mailOptions["o:deliverytime"] = sendDate.toUTCString();
+
+  await mg.messages.create("mg.typebot.io", mailOptions);
+};
+```
+
+`o:deliverytime` option allows you to set a future send date to avoid sending the email right away. For example, you can decide to send it at the same time your user registered 3 days ago.
+
+I've created a scheduled function that runs every day at 4am:
+
+```ts
+export const sendOnboardingEmails = functions
+  .region("europe-west3")
+  .pubsub.schedule("0 4 * * *")
+  .timeZone("Europe/Paris")
+  .onRun(
+    sentryWrapper(async () => {
+      await sendFirstOnboardingEmails(3);
+      await sendSecondOnboardingEmails(6);
+      await sendThirdOnboardingEmails(8);
+    })
+  );
+```
+
+Every function sends the corresponding email according to what the user has done.
+
+## Stop the sequence if a user replies
+
+Imagine the user answers to the first onboarding email. Something like
+
+> Thank you for this email, I'll try out what you say in the next few days.
+
+I didn't want to send him the next automated emails.
+So I had to call a webhook whenever someone replies to an email. Mailgun allows you to do this 🤯
+
+It's located under the Receiving tab. You can forward emails to your API endpoint:
+
+<NextImage src={"onboarding-emails/mailgun-route.png"} />
+
+My route handler looks like this:
+
+```ts
+import { NextApiRequest, NextApiResponse } from "next";
+import formidable from "formidable";
+
+const form = formidable();
+
+async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const data = await new Promise<{
+    err: unknown;
+    fields: formidable.Fields;
+    files: formidable.Files;
+  }>((resolve, reject) => {
+    form.parse(req, (err, fields, files) => {
+      if (err) reject({ err });
+      resolve({ err, fields, files });
+    });
+  });
+  const { From } = data.fields;
+  const email = From.toString()
+    .match(/[^<]+@[^>]+/)
+    ?.shift();
+  if (!email) return;
+  await updateUserOnboardingProp(email);
+  return res.send({ message: `Sequence stopped successfuly for ${email}` });
+}
+```
+
+It grabs the email and simply updates a user field in the database so that you won't send him another onboarding email.
+
+## Conclusion
+
+That's it! It's still a basic implementation. But having full control (with code) over what you can send is a huge pro for me.
+
+Let me know if you have any questions. You can reach out to me on [Twitter @baptisteArno](https://twitter.com/baptisteArno)
