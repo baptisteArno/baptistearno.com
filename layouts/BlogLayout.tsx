@@ -29,7 +29,7 @@ export const BlogLayout = ({
       <SocialMetaTags
         title={frontMatter.title}
         description={frontMatter.summary}
-        imagePreviewUrl={frontMatter.imagePath}
+        imagePreviewUrl={`/images${frontMatter.imagePath}`}
         currentUrl={`https://baptistearno.com/blog/${frontMatter.slug}`}
       />
       <Stack spacing={4} w="full">
