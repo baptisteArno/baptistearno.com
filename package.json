@@ -6,9 +6,7 @@
     "build": "next build",
     "test": "jest --watch",
     "lint": "eslint --fix --no-error-on-unmatched-pattern -c ./.eslintrc.js \"**/*.ts*\"",
-    "start": "next start",
-    "generate": "DOTENV_CONFIG_PATH=./.env.local graphql-codegen -r dotenv/config --config codegen.js",
-    "generate:watch": "yarn generate --watch"
+    "start": "next start"
   },
   "dependencies": {
     "@chakra-ui/css-reset": "^1.0.0",
