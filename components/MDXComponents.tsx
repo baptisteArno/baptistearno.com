@@ -10,12 +10,14 @@ import { CopyButton } from "./CopyButton";
 const NextImage = (props: ImageProps): JSX.Element => {
   const { src, alt } = props;
   return (
-    <Image
-      src={require(`../public/images/blog/${src}`)}
-      alt={alt}
-      placeholder="blur"
-      className="rounded top-space"
-    />
+    <Flex justifyContent="center">
+      <Image
+        src={require(`../public/images/blog/${src}`)}
+        alt={alt}
+        placeholder="blur"
+        className="rounded top-space"
+      />
+    </Flex>
   );
 };
 
