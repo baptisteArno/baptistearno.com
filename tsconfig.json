@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
+    "types": ["cypress", "@testing-library/cypress"],
     "allowJs": true,
     "alwaysStrict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "jsx": "preserve",
     "lib": ["dom", "es2019"],
     "module": "esnext",
