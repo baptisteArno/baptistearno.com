@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
-    "types": ["cypress", "@testing-library/cypress"],
+    "types": [
+      "cypress",
+      "@testing-library/cypress"
+    ],
     "allowJs": true,
     "alwaysStrict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "isolatedModules": false,
+    "isolatedModules": true,
     "jsx": "preserve",
-    "lib": ["dom", "es2019"],
+    "lib": [
+      "dom",
+      "es2019"
+    ],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -20,15 +26,35 @@
     "target": "esnext",
     "baseUrl": ".",
     "paths": {
-      "@/data/*": ["data/*"],
-      "@/lib/*": ["lib/*"],
-      "@/styles/*": ["assets/styles/*"],
-      "@/components/*": ["components/*"],
-      "@/types/*": ["types/*"],
-      "@/layouts/*": ["layouts/*"],
-      "@/assets/*": ["assets/*"]
-    }
+      "@/data/*": [
+        "data/*"
+      ],
+      "@/lib/*": [
+        "lib/*"
+      ],
+      "@/styles/*": [
+        "assets/styles/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ],
+      "@/layouts/*": [
+        "layouts/*"
+      ],
+      "@/assets/*": [
+        "assets/*"
+      ]
+    },
+    "incremental": true
   },
-  "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
