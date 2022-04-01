@@ -9,7 +9,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeCodeTitles from "rehype-code-titles";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypePrism from "rehype-prism-plus";
-import { BlogPostContent, FrontMatter } from "@/types/blog";
+import { BlogPostContent, FrontMatter } from "types/blog";
 
 export const getBlogPostSlugs = (): string[] =>
   readdirSync(join(process.cwd(), "data", "blog")).map((name) =>

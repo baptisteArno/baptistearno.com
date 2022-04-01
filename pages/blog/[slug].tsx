@@ -1,14 +1,14 @@
 import React from "react";
 import { GetStaticPathsResult, GetStaticPropsResult } from "next";
 import { MDXRemote } from "next-mdx-remote";
-import { BlogLayout } from "@/layouts/BlogLayout";
-import { getBlogPostSlugs, getBlogPostContent } from "@/lib/mdx";
-import { BlogPostContent } from "@/types/blog";
+import { BlogLayout } from "layouts/BlogLayout";
+import { getBlogPostSlugs, getBlogPostContent } from "lib/mdx";
+import { BlogPostContent } from "types/blog";
 import components from "components/MDXComponents";
 
 const Blog = ({ mdxSource, frontMatter }: BlogPostContent): JSX.Element => (
   <BlogLayout frontMatter={frontMatter}>
-    <MDXRemote {...mdxSource} components={components} />
+    <MDXRemote {...mdxSource} components={components as any} />
   </BlogLayout>
 );
 

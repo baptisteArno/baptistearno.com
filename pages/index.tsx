@@ -1,37 +1,35 @@
 import React from "react";
-import { VStack } from "@chakra-ui/react";
+import { Stack } from "@chakra-ui/react";
 import { GetStaticPropsResult } from "next";
 import { Intro } from "components/Homepage/Intro";
-import SubscribeNewsletterForm from "components/SubscribeNewsletterForm";
-import { Page, PageLayout } from "@/layouts/PageLayout";
-import { FrontMatter } from "@/types/blog";
-import { getBlogPostSlugs, getBlogPostFrontMatter } from "@/lib/mdx";
-import { FeaturedPosts } from "@/components/Homepage/FeaturedPosts";
-import { openSourceProjects, projects } from "@/data/projects";
-import { Project } from "@/types/project";
-import { Projects } from "@/components/Homepage/Projects";
-import { SocialMetaTags } from "@/components/SocialMetaTags";
+import { Page, PageLayout } from "layouts/PageLayout";
+import { FrontMatter } from "types/blog";
+import { getBlogPostSlugs, getBlogPostFrontMatter } from "lib/mdx";
+import { SocialMetaTags } from "components/SocialMetaTags";
+import { BlogPosts } from "components/Blog/BlogPosts";
 
 type Props = {
-  projects: Project[];
   frontMatters: FrontMatter[];
 };
 
-const Index = ({ projects, frontMatters }: Props): JSX.Element => {
+const Index = ({ frontMatters }: Props): JSX.Element => {
   return (
     <PageLayout currentPage={Page.HOME}>
       <SocialMetaTags
-        title="baptisteArno"
-        description="Software developer, founder of Typebot."
+        title="Baptiste Arnaud"
+        description="Software Developer. Founder of Typebot, an open-source conversational form builder."
         imagePreviewUrl="/images/site-preview.png"
         currentUrl={`https://baptistearno.com/`}
       />
-      <VStack spacing="10">
+      <Stack spacing="20">
         <Intro />
-        <FeaturedPosts frontMatters={frontMatters} />
-        <Projects projects={projects} />
-        <SubscribeNewsletterForm />
-      </VStack>
+        <BlogPosts
+          frontMatters={frontMatters.sort(
+            (a, b) =>
+              Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
+          )}
+        />
+      </Stack>
     </PageLayout>
   );
 };
@@ -41,7 +39,6 @@ export const getStaticProps = async (): Promise<
 > => {
   return {
     props: {
-      projects: projects.concat(openSourceProjects),
       frontMatters: getBlogPostSlugs()
         .filter((slug) =>
           ["from-1-to-767-paying-users", "onboarding-emails"].includes(slug)

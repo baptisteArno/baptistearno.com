@@ -1,41 +1,38 @@
-import { useColorModeValue, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { useColorModeValue, Heading, Text, Stack } from "@chakra-ui/react";
 import React from "react";
-import Image from "next/image";
-import { MotionStack } from "../motion";
 import { NextChakraLink } from "../nextAdapters/NextChakraLink";
-import { FrontMatter } from "@/types/blog";
+import { FrontMatter } from "types/blog";
+import { parseISO, format } from "date-fns";
 
 type Props = {
   frontMatters: FrontMatter[];
 };
 
 export const BlogPosts = ({ frontMatters }: Props): JSX.Element => {
-  const cardBgColor = useColorModeValue("", "gray.800");
+  const cardBgColor = useColorModeValue("gray.50", "gray.800");
+  const dateColor = useColorModeValue("gray.500", "gray.500");
+  const descriptionColor = useColorModeValue("gray.600", "gray.400");
   return (
-    <SimpleGrid columns={[1, 2]} w="full" spacing={3} maxW="1000px" id="blog">
+    <Stack w="full" spacing={10} id="blog">
       {frontMatters.map((frontMatter) => (
-        <MotionStack
+        <Stack
           as={NextChakraLink}
           key={frontMatter.slug}
-          whileHover={{ y: -5 }}
           p={4}
           rounded="xl"
-          shadow="md"
           cursor="pointer"
-          spacing={5}
-          bgColor={cardBgColor}
+          _hover={{ bgColor: cardBgColor }}
           href={"/blog/" + frontMatter.slug}
         >
-          <Image
-            src={require(`../../public/images${frontMatter.imagePath}`)}
-            placeholder="blur"
-            className="rounded"
-          />
-
-          <Heading size="lg">{frontMatter.title}</Heading>
-          <Text>{frontMatter.summary}</Text>
-        </MotionStack>
+          <Heading fontSize="2xl">{frontMatter.title}</Heading>
+          <Text color={dateColor}>
+            {format(parseISO(frontMatter.publishedAt), "MMMM dd, yyyy")}
+            {` • `}
+            {frontMatter.readingTime.text}
+          </Text>
+          <Text color={descriptionColor}>{frontMatter.summary}</Text>
+        </Stack>
       ))}
-    </SimpleGrid>
+    </Stack>
   );
 };

@@ -11,40 +11,38 @@ export type NextChakraLinkProps = PropsWithChildren<
   { isText?: boolean } & NextLinkProps & Omit<ChakraLinkProps, "as">
 >;
 
-export const NextChakraLink = React.forwardRef(
-  (
-    {
-      href,
-      as,
-      replace,
-      scroll,
-      shallow,
-      prefetch,
-      children,
-      isText,
-      ...chakraProps
-    }: NextChakraLinkProps,
-    ref
-  ) => {
-    return (
-      <NextLink
-        passHref={true}
-        href={href}
-        as={as}
-        replace={replace}
-        scroll={scroll}
-        shallow={shallow}
-        prefetch={prefetch}
+export const NextChakraLink = React.forwardRef(function Link(
+  {
+    href,
+    as,
+    replace,
+    scroll,
+    shallow,
+    prefetch,
+    children,
+    isText,
+    ...chakraProps
+  }: NextChakraLinkProps,
+  ref
+) {
+  return (
+    <NextLink
+      passHref={true}
+      href={href}
+      as={as}
+      replace={replace}
+      scroll={scroll}
+      shallow={shallow}
+      prefetch={prefetch}
+    >
+      <ChakraLink
+        ref={ref as MutableRefObject<HTMLAnchorElement>}
+        {...chakraProps}
+        _hover={{ textDecoration: isText ? "underline" : "none" }}
+        textDecor={isText ? "underline" : "none"}
       >
-        <ChakraLink
-          ref={ref as MutableRefObject<HTMLAnchorElement>}
-          {...chakraProps}
-          _hover={{ textDecoration: isText ? "underline" : "none" }}
-          textDecor={isText ? "underline" : "none"}
-        >
-          {children}
-        </ChakraLink>
-      </NextLink>
-    );
-  }
-);
+        {children}
+      </ChakraLink>
+    </NextLink>
+  );
+});

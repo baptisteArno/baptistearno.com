@@ -1,7 +1,8 @@
-import { Footer } from "components/Footer";
-import { Flex, Stack, useColorModeValue } from "@chakra-ui/react";
+import { Flex, IconButton, Stack, useColorModeValue } from "@chakra-ui/react";
 import React, { ReactNode } from "react";
-import Navbar from "@/components/Navbar";
+import { DarkModeButton } from "components/DarkModeButton";
+import { NextChakraLink } from "components/nextAdapters/NextChakraLink";
+import { HomeIcon } from "assets/icons";
 
 export enum Page {
   HOME,
@@ -13,15 +14,22 @@ type Props = {
   currentPage: Page;
 };
 
-export const PageLayout = ({ children, currentPage }: Props): JSX.Element => {
+export const PageLayout = ({ children }: Props): JSX.Element => {
   const cardBgColor = useColorModeValue("white", "gray.900");
   return (
-    <Stack bgColor={cardBgColor} justifyContent="center" alignItems="center">
-      <Navbar currentPage={currentPage} />
-      <Flex w="full" maxW="1000px" pb={32} pt={6} px="4" mx="auto">
+    <Stack bgColor={cardBgColor} alignItems="center" minH="100vh">
+      <Flex maxW="700px" w="full" justifyContent="space-between" py="4" px="4">
+        <IconButton
+          aria-label="Go to my twitter profile"
+          as={NextChakraLink}
+          href="/"
+          icon={<HomeIcon />}
+        />
+        <DarkModeButton />
+      </Flex>
+      <Flex w="full" maxW="700px" pb={32} pt={6}>
         {children}
       </Flex>
-      <Footer />
     </Stack>
   );
 };

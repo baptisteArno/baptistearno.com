@@ -1,7 +1,7 @@
 import { extendTheme } from "@chakra-ui/react";
 
 const fonts = {
-  heading: "Domine",
+  heading: "Poppins",
   body: "Inter",
 };
 
