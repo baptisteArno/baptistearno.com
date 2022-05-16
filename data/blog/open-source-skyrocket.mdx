@@ -1,0 +1,108 @@
+---
+title: "Open-source your SaaS and skyrocket your MRR."
+publishedAt: "2022-05-16"
+summary: "As a creator, what's the best way to show your audience that you have good intentions and build instant trust? Be as transparent as possible. And what's the ultimate transparency move for an indie developer? Open-sourcing your project."
+imagePath: "/blog/open-source-skyrocket/mrr-chart.png"
+---
+
+I discovered Plausible a year ago, an open-source alternative to Google Analytics. Their product has a superb UX/UI, it's simple, well-thought and it breathes transparency. I was astonished. I always associated open-source with ugly legacy software.
+
+Since then, I fell in love with Open-source SaaS. I discovered many open-source alternatives such as Cal.com, N8N, and PostHog.
+
+At that time I had been working on Typebot for a year. MRR grew very slowly ($300) and I wasn't proud of what I created for different reasons, including:
+
+- The codebase started to get messy and didn't have automated tests. Every time I deployed a new release I crossed my fingers not to introduce bugs. This is definitely not good.
+- It was based on Firebase, managed cloud services by Google. It helps you build your MVP faster but it comes with many limitations and it is vendor-locking you like crazy, you can't easily eject your database.
+
+So I started thinking about implementing Typebot 2.0, a brand new UX, based on open, modern technologies and 100% open-source 🥰
+
+But, I asked myself many questions:
+
+- How is giving away my code supposed to generate more sales?
+- Wouldn't it destroy my business if competitors can steal what I've implemented?
+
+## The switch from close to open source
+
+A year after launching Typebot, I still worked hard on marketing the product properly. My days were dedicated to customer support, bug fixes, content creation, and feature developments.
+
+In late November 2021, everything slowed down and that's when I decided to create a new version of Typebot from scratch with a different UX, different underlying technologies, and open-source everything.
+
+For 3-4 months, I implemented the best UX possible based on my learnings from version 1 and existing competitors (Landbot, Voiceflow, Typeform...).
+
+Knowing that I'll have to allow others to self-host their version of Typebot made me choose very open technologies.
+
+For example, I could have chosen to use the Supabase JS client but then it would require self-hosters to also use Supabase services and it might not fit their existing infrastructure. So I've decided to use Prisma with a PostgresDB database. This way, they just have to bring their own database.
+
+From there, I had one thing in mind: Freedom. I started to implement features that empower users and let them do whatever they want such as JSON export, custom code blocks, and custom CSS to name a few.
+
+So many companies nowadays choose not to implement features that give too much freedom to their user. For example, some website builders don't allow you to export the HTML because they want you to use their hosting service. That's the definition of vendor-locking and I think it is toxic.
+
+Funnily enough, I think the more freedom you give to your users, the more they are enticed to use your paid services, they'll be loyal in a sense because they love you for giving them the choice
+
+The launch date was February 15
+
+<NextImage src={"open-source-skyrocket/typebot2-launch.png"} />
+
+Typebot still wasn't open-source at that time. My first goal was to migrate existing users to Typebot 2.0.
+
+It's only a month later, after making sure that the platform is stable enough and users like it, that I announced that Typebot is self-hostable and 100% open-source. I've tried to build a beautiful README and got inspired by existing modern open-source SaaS:
+
+<NextImage src={"open-source-skyrocket/github-preview.png"} />
+
+[(https://github.com/baptisteArno/typebot.io)](https://github.com/baptisteArno/typebot.io)
+
+Since February, Typebot's revenue is growing faster than ever
+
+<NextImage src={"open-source-skyrocket/mrr-chart.png"} />
+
+We could argue that this is due to the launch of Typebot 2.0 and not the fact that it's open-source. But I think it's a whole mindset that made this happen: being as transparent as possible and trying to empower users as much as possible.
+
+I'm extremely grateful for this. Hopefully, it will continue to grow and 😃
+
+I'm currently focusing on talking to potential contributors. The idea is to build a community of developers to work on new features.
+
+## Misconception about Open-source
+
+I think there are a lot of misconceptions about open-source. And before making my jump I also was very skeptical.
+
+### Anyone can steal your project
+
+Anyone can copy-paste the project. But, open-source projects are protected by licenses with specific rules. These rules dictate what the user of the project has the right to do with it. Some licenses will say “You can do whatever you want”, others will say “You can't commercialize it”
+
+In the case of Typebot, it uses the APGLv3 license (well known for open-source SaaS), which says that anyone can commercialize their own version of Typebot but they need to make it open-source and make it clear to their user that their version is a fork of the official Typebot project.
+
+So, if someone is commercializing his version of Typebot. I think it's also a win for Typebot because I'll be able to pick what has been implemented in the alternative version and it also creates a great advertisement for the Official version.
+
+### Because users can self-host the product, they won't pay for a subscription.
+
+Hosting a project yourself is often a pain. You need to make sure the server is stable and is up and running 24/7, you need to upgrade the project yourself, make it secure, etc...
+
+Using the official cloud service is a relief and you don't have to think about all this.
+
+Still, self-hosting is dedicated to tinkerers, people who love doing things themself. And the project can greatly benefit from those potential contributors. They'll most likely want to add more features themself and contribute to the project helping it being as competitive as possible.
+
+### Competitors can steal some of your features
+
+In reality, this never happens because even if the source code is accessible it doesn't mean it is easy to navigate into the code base and extract a feature to inject it into another project. Oftentimes, only active maintainers know how the code source is organized and where to look.
+
+## Why you should consider Open-source
+
+Open-sourcing your entire project comes with many advantages:
+
+- Your marketing message can contain “Open-source” and this builds instant trust in your customer. They know that, in theory, you are not selling anything. You are just showcasing your product.
+  Your marketing message can also say “the Open-source alternative to X”, with X being the main competitor in your market. People love helping David vs Goliath when David has great intentions.
+- Anyone can contribute to the product and help you with bug fixes and product features. That's a huge advantage, especially for solo entrepreneurs. It could give you enough speed to be as fast as your competitors. Even if you don't target developers, there will still be tech guys in any niche that would be willing to contribute.
+
+All these pros can (IMO) lead to better sales in general and give you a healthy mindset.
+
+I think we are more than ever interested in the “authenticity” concept in digital products. Especially since NFTs trend, We switched from a:
+
+“Whatever, I can copy-paste the files” era to a “Who has created this piece of art? Who's the owner?”
+
+We now tend to care more about the creator than the creation.
+
+Ultimately, it is also changing the way we are choosing software over another. I personally want to support teams and creators with good intentions, people who have created great products that empower me.
+
+Now, as a creator, what's the best way to show your audience that you have good intentions and build instant trust? Be as transparent as possible. And what's the ultimate transparency move for an indie developer? Open-sourcing your project.
+
+Hopefully, this story inspired you. I would love to know what you think of all this. Let's [talk on Twitter](https://twitter.com/baptistearno) ♥️

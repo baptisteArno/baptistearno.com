@@ -10,7 +10,7 @@ export default class Document extends NextDocument {
           <link rel="icon" type="image/png" href="/favicon.png" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Poppins&family=Inter:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Open+Sans:wght@400;700&display=swap"
             rel="stylesheet"
           />
         </Head>

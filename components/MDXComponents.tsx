@@ -31,7 +31,7 @@ const CodeBlock = (props: HTMLPreElement): JSX.Element => {
   return (
     <Flex pos="relative" overflow="hidden">
       <chakra.pre m="0" ref={codeRef}>
-        {props.children}
+        {props.children as any}
       </chakra.pre>
       <CopyButton
         size="sm"
@@ -46,7 +46,7 @@ const CodeBlock = (props: HTMLPreElement): JSX.Element => {
   );
 };
 
-const MDXComponents: Record<string, React.ReactNode> = {
+const MDXComponents: Record<string, any> = {
   NextImage,
   a: (props: NextChakraLinkProps) => (
     <NextChakraLink isExternal isText {...props} />

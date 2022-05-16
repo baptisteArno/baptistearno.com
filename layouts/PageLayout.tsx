@@ -15,7 +15,7 @@ type Props = {
 };
 
 export const PageLayout = ({ children }: Props): JSX.Element => {
-  const cardBgColor = useColorModeValue("white", "gray.900");
+  const cardBgColor = useColorModeValue("white", "black");
   return (
     <Stack bgColor={cardBgColor} alignItems="center" minH="100vh">
       <Flex maxW="700px" w="full" justifyContent="space-between" py="4" px="4">

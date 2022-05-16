@@ -1,8 +1,9 @@
 import { extendTheme } from "@chakra-ui/react";
+import { mode } from "@chakra-ui/theme-tools";
 
 const fonts = {
   heading: "Poppins",
-  body: "Inter",
+  body: "Open Sans",
 };
 
 const theme = extendTheme({
@@ -11,7 +12,14 @@ const theme = extendTheme({
     initialColorMode: "dark",
   },
   colors: {
-    black: "#333333",
+    black: "#111111",
+  },
+  styles: {
+    global: (props: any) => ({
+      body: {
+        bg: mode("white", "black")(props),
+      },
+    }),
   },
   fonts,
 });

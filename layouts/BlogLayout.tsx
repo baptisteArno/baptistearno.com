@@ -7,6 +7,7 @@ import { SocialMetaTags } from "components/SocialMetaTags";
 import { Global } from "@emotion/react";
 import { parseISO, format } from "date-fns";
 import Image from "next/image";
+import { NewsletterBot } from "components/NewsletterBot";
 
 type BlogLayoutProps = {
   children: ReactNode;
@@ -42,6 +43,7 @@ export const BlogLayout = ({
         </Stack>
 
         {children}
+        <NewsletterBot />
       </Stack>
     </PageLayout>
   );

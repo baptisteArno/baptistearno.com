@@ -39,11 +39,9 @@ export const getStaticProps = async (): Promise<
 > => {
   return {
     props: {
-      frontMatters: getBlogPostSlugs()
-        .filter((slug) =>
-          ["from-1-to-767-paying-users", "onboarding-emails"].includes(slug)
-        )
-        .map((slug) => getBlogPostFrontMatter(slug).frontMatter),
+      frontMatters: getBlogPostSlugs().map(
+        (slug) => getBlogPostFrontMatter(slug).frontMatter
+      ),
     },
     revalidate: 1,
   };
