@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export const PostCard = (post: Post) => {
   return (
-    <div className="mb-8">
+    <div>
       <h2 className="mb-1 text-xl">
         <Link
           href={post.url}

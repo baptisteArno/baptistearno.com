@@ -28,9 +28,11 @@ export default function Home() {
         <SocialLinks />
       </div>
       <hr />
-      {posts.map((post, idx) => (
-        <PostCard key={idx} {...post} />
-      ))}
+      <div className="flex flex-col gap-2">
+        {posts.map((post, idx) => (
+          <PostCard key={idx} {...post} />
+        ))}
+      </div>
     </div>
   );
 }
