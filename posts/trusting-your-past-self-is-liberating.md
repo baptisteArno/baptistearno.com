@@ -1,7 +1,7 @@
 ---
-title: Trust your past self is liberating
+title: Trusting your past self is liberating
 date: 2023-07-30
-image: ../public/images/trust-your-past-self-is-liberating.png
+image: ../public/images/trusting-your-past-self-is-liberating.png
 description: First week I executed on my schedule. I just had to trust my past self. It's liberating.
 ---
 
