@@ -5,9 +5,9 @@ import { compareDesc } from "date-fns";
 import { PostCard } from "@/components/PostCard";
 
 export default function Home() {
-  const posts = allPosts.sort((a, b) =>
-    compareDesc(new Date(a.date), new Date(b.date))
-  );
+  const posts = allPosts
+    .filter((post) => !post.isDraft)
+    .sort((a, b) => compareDesc(new Date(a.date), new Date(b.date)));
 
   return (
     <div className="flex flex-col gap-8">
