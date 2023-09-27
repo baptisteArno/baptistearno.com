@@ -5,7 +5,6 @@ image: ../public/images/i-struggle-with-why.png
 description: My first attempt at journaling. I jotted down my thoughts and started to reflect on my true goal.
 isDraft: true
 ---
-
 I'm often asked how to start a solopreneur journey and how to succeed without funds and without a cofounder.
 
 Most indie hackers will tell you that you should avoid falling into the trap of building a product and forget to properly market it.
