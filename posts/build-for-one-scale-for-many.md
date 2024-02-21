@@ -2,7 +2,7 @@
 title: Build for one, Scale for many
 date: 2024-02-21
 image: ../public/images/build-for-one-scale-for-many.png
-description: My reflexion on an infallible way to build a product
+description: My reflection on an infallible way to build a product
 ---
 A year ago, I attended a live AMA session with the Notion team in Paris. It profoundly changed my perspective on product development.
 
