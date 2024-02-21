@@ -37,7 +37,7 @@ From this insight, I've distilled a two-part formula for product-led businesses.
 
 ## 2. Marketing
 
-1. Reach out to that client you focused on and show them your work. There is a good chance they will be impressed because that’s not a shitty mass email thing you send them. It’s 100% tailor made, you really considered their challenges.
+1. Reach out to that client you focused on and show them your work. There is a good chance she will be impressed because that’s not a generic mass email thing you send her. It’s 100% tailor made, you really considered their challenges.
 3. Use this experience as a case studies on your docs or website.
 4. Announce new features created during that experiment on your social media.
 5. Go back to product development.
