@@ -4,7 +4,7 @@ date: 2024-02-21
 image: ../public/images/build-for-one-scale-for-many.png
 description: My reflexion on an infallible way to build a product
 ---
-A year ago, I attended a live AMA session with the Notion team in Paris which profoundly changed my perspective on product development.
+A year ago, I attended a live AMA session with the Notion team in Paris. It profoundly changed my perspective on product development.
 
 There were lots of questions about how they build and prioritise new features. They kept answering that they first focus on a specific use case and only then they think about what can be improved in that particular use case.
 
